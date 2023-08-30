@@ -1,4 +1,4 @@
-const ToDoModel = require("../models/ToDoModel");
+const ToDoModel = require("../models/TodoModel");
 
 module.exports.getToDo = async (req, res) => {
   const todo = await ToDoModel.find();
@@ -6,9 +6,9 @@ module.exports.getToDo = async (req, res) => {
 };
 
 module.exports.saveToDo = (req, res) => {
-  const { text } = req.body;
+  const { text, usersel } = req.body;
 
-  ToDoModel.create({ text })
+  ToDoModel.create({ text, usersel })
     .then((data) => {
       console.log("Added Successfully...");
       console.log(data);
